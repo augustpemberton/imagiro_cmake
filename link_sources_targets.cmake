@@ -5,6 +5,7 @@ target_sources("${ProjectName}" PRIVATE "${PROJECT_SOURCES}")
 file(GLOB binarydata_SRC
         "${CMAKE_CURRENT_LIST_DIR}/../src/ui/dist/*.*"
         "${CMAKE_CURRENT_LIST_DIR}/../src/ui/dist/assets/*.*"
+        "${CMAKE_CURRENT_LIST_DIR}/../src/ui/dist/fonts/*.*"
         "${CMAKE_CURRENT_LIST_DIR}/../src/Parameters.yaml"
 )
 juce_add_binary_data("${ProjectName}Data" SOURCES ${binarydata_SRC} )
