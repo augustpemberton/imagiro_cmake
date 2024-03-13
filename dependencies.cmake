@@ -28,12 +28,21 @@ CPMAddPackage(
         "CATCH_INSTALL_DOCS OFF"  # Disable installation of documentation
         "CATCH_INSTALL_HELPERS OFF" # Disable installation of helpers
 )
+
+CPMAddPackage(
+        NAME zstr
+        GIT_TAG master # or specific tag/commit
+        GITHUB_REPOSITORY mateidavid/zstr
+        OPTIONS "ZSTR_BUILD_TESTS OFF"
+)
+
 set(SHARED_DEPENDENCIES
         juce::juce_audio_utils
         juce::juce_dsp
         yaml-cpp
         imagiro_util
         imagiro_processor
+        zstr # for compressing preset strings
         "${ProjectName}Data"
 )
 
