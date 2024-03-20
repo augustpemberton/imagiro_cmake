@@ -37,7 +37,3 @@ set(SHARED_DEPENDENCIES
         imagiro_processor
         "${ProjectName}Data"
 )
-
-if (APPLE)
-    list(APPEND SHARED_DEPENDENCIES "-framework Foundation")
-endif()
