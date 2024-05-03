@@ -7,6 +7,8 @@ file(GLOB binarydata_SRC
         "${CMAKE_CURRENT_LIST_DIR}/../src/ui/dist/assets/*.*"
         "${CMAKE_CURRENT_LIST_DIR}/../src/ui/dist/fonts/*.*"
         "${CMAKE_CURRENT_LIST_DIR}/../src/Parameters.yaml"
+        "${CMAKE_CURRENT_LIST_DIR}/../src/resources/logo.svg"
+        "${CMAKE_CURRENT_LIST_DIR}/../src/resources/startup-blurred.png"
 )
 juce_add_binary_data("${ProjectName}Data" SOURCES ${binarydata_SRC} )
 target_include_directories("${ProjectName}" PUBLIC "${PROJECT_BINARY_DIR}")
