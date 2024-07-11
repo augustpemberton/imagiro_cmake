@@ -3,11 +3,11 @@ target_sources("${ProjectName}" PRIVATE "${PROJECT_SOURCES}")
 
 # Setup binary data
 file(GLOB binarydata_SRC
+        "${BINARY_SOURCES}"
         "${CMAKE_CURRENT_LIST_DIR}/../src/ui/dist/*.*"
         "${CMAKE_CURRENT_LIST_DIR}/../src/ui/dist/assets/*.*"
         "${CMAKE_CURRENT_LIST_DIR}/../src/ui/dist/fonts/*.*"
         "${CMAKE_CURRENT_LIST_DIR}/../src/Parameters.yaml"
-        "${CMAKE_CURRENT_LIST_DIR}/../src/resources/startup-blurred.png"
 )
 juce_add_binary_data("${ProjectName}Data" SOURCES ${binarydata_SRC} )
 target_include_directories("${ProjectName}" PUBLIC "${PROJECT_BINARY_DIR}")
