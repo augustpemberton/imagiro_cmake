@@ -35,3 +35,8 @@ file(GLOB_RECURSE JUCE_SOURCES CONFIGURE_DEPENDS
 
 set_source_files_properties(${JUCE_SOURCES} PROPERTIES SKIP_PRECOMPILE_HEADERS TRUE SKIP_UNITY_BUILD_INCLUSION TRUE)
 
+# link against WinRT so we can manually check for windows text scaling
+if (WIN32)
+    target_link_libraries(${ProjectName} PRIVATE WindowsApp)
+endif()
+

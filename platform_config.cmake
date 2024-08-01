@@ -1,7 +1,9 @@
 # Windows configuration
 if (WIN32)
     set(CMAKE_MSVC_RUNTIME_LIBRARY "MultiThreaded$<$<CONFIG:Debug>:Debug>")
-    add_compile_definitions(NOMINMAX)
+    add_compile_options(/EHsc /bigobj)
+    add_compile_definitions(NOMINMAX WIN32_LEAN_AND_MEAN)
+    add_compile_definitions(WINRT_LEAN_AND_MEAN)
 endif()
 
 # macOS configuration
