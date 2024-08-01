@@ -4,6 +4,9 @@ if (WIN32)
     add_compile_options(/EHsc /bigobj)
     add_compile_definitions(NOMINMAX WIN32_LEAN_AND_MEAN)
     add_compile_definitions(WINRT_LEAN_AND_MEAN)
+
+    add_compile_options(/await)
+    set(CMAKE_VS_WINDOWS_TARGET_PLATFORM_VERSION 10.0)
 endif()
 
 # macOS configuration
