@@ -8,6 +8,10 @@ if (BETA)
     add_compile_definitions(BETA)
 endif()
 
+if (NOT DEFINED ProductSlug)
+    set (ProductSlug ${ProjectName})
+endif()
+
 # Define resource, project, company names, and version for use in the project
 add_compile_definitions(
         RESOURCE_NAME="${ResourceName}"
