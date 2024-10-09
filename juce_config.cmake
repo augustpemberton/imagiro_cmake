@@ -7,7 +7,7 @@ juce_add_plugin("${ProjectName}"
         COPY_PLUGIN_AFTER_BUILD TRUE
         PLUGIN_MANUFACTURER_CODE "${CompanyCode}"
         PLUGIN_CODE "${PluginCode}"
-        FORMATS AU VST3 Standalone LV2
+        FORMATS AU VST3 Standalone
         PRODUCT_NAME "${PluginName}"
         LV2URI https://imagi.ro/piano
         VST3_AUTO_MANIFEST TRUE)
