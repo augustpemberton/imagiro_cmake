@@ -5,7 +5,7 @@ set(CPM_SOURCE_CACHE "${CMAKE_CURRENT_LIST_DIR}/cache/")
 CPMAddPackage(
         NAME JUCE
         GITHUB_REPOSITORY juce-framework/JUCE
-        GIT_TAG 7.0.10
+        GIT_TAG 8.0.2
         OPTIONS
         "JUCE_BUILD_EXAMPLES OFF" # Disable building examples
         "JUCE_BUILD_EXTRAS OFF"   # Disable building extras

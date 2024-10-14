@@ -7,7 +7,7 @@ juce_add_plugin("${ProjectName}"
         COPY_PLUGIN_AFTER_BUILD TRUE
         PLUGIN_MANUFACTURER_CODE "${CompanyCode}"
         PLUGIN_CODE "${PluginCode}"
-        FORMATS AU VST3 Standalone
+        FORMATS AU VST3 Standalone AAX
         PRODUCT_NAME "${PluginName}"
         VST3_AUTO_MANIFEST TRUE)
 
