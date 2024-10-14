@@ -9,6 +9,7 @@ juce_add_plugin("${ProjectName}"
         PLUGIN_CODE "${PluginCode}"
         FORMATS AU VST3 Standalone AAX
         PRODUCT_NAME "${PluginName}"
+        LV2URI https://imagi.ro/piano
         VST3_AUTO_MANIFEST TRUE)
 
 target_compile_definitions("${ProjectName}"
