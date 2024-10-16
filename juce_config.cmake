@@ -7,17 +7,18 @@ juce_add_plugin("${ProjectName}"
         COPY_PLUGIN_AFTER_BUILD TRUE
         PLUGIN_MANUFACTURER_CODE "${CompanyCode}"
         PLUGIN_CODE "${PluginCode}"
-        FORMATS AU VST3 Standalone AAX
+        FORMATS AU VST3 Standalone
         PRODUCT_NAME "${PluginName}"
         LV2URI https://imagi.ro/piano
+#        NEEDS_WEBVIEW2 TRUE
         VST3_AUTO_MANIFEST TRUE)
 
 target_compile_definitions("${ProjectName}"
         PUBLIC
-        JUCE_WEB_BROWSER=0
+#        JUCE_WEB_BROWSER=1
+#        JUCE_USE_WIN_WEBVIEW2_WITH_STATIC_LINKING=1
         JUCE_USE_CURL=0
         JUCE_VST3_CAN_REPLACE_VST2=0
-        JUCE_DISPLAY_SPLASH_SCREEN=0
         DONT_SET_USING_JUCE_NAMESPACE=1
 )
 
