@@ -9,10 +9,18 @@ if (WIN32)
     set(CMAKE_VS_WINDOWS_TARGET_PLATFORM_VERSION 10.0)
 endif()
 
-# macOS configuration
+# macOS and iOS configuration
 if(APPLE)
-    set (CMAKE_OSX_DEPLOYMENT_TARGET "10.13" CACHE STRING "Minimum OS X deployment version" FORCE)
-    set (CMAKE_OSX_ARCHITECTURES "x86_64;arm64" CACHE STRING "Architectures" FORCE)
+    # Check if we're building for iOS
+    if(CMAKE_SYSTEM_NAME STREQUAL "iOS")
+        # iOS specific settings
+        set(CMAKE_OSX_DEPLOYMENT_TARGET "12.0" CACHE STRING "Minimum iOS deployment version" FORCE)
+        set(CMAKE_OSX_ARCHITECTURES "arm64" CACHE STRING "Architectures" FORCE)
+    else()
+        # macOS specific settings
+        set(CMAKE_OSX_DEPLOYMENT_TARGET "10.13" CACHE STRING "Minimum macOS deployment version" FORCE)
+        set(CMAKE_OSX_ARCHITECTURES "x86_64;arm64" CACHE STRING "Architectures" FORCE)
+    endif()
 endif()
 
 cmake_policy(SET CMP0069 NEW)
