@@ -18,7 +18,7 @@ if(APPLE)
         set(CMAKE_OSX_ARCHITECTURES "arm64" CACHE STRING "Architectures" FORCE)
     else()
         # macOS specific settings
-        set(CMAKE_OSX_DEPLOYMENT_TARGET "10.13" CACHE STRING "Minimum macOS deployment version" FORCE)
+        set(CMAKE_OSX_DEPLOYMENT_TARGET "10.15" CACHE STRING "Minimum macOS deployment version" FORCE)
         set(CMAKE_OSX_ARCHITECTURES "x86_64;arm64" CACHE STRING "Architectures" FORCE)
     endif()
 endif()
