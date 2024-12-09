@@ -3,7 +3,7 @@ include(${CMAKE_CURRENT_SOURCE_DIR}/cmake/CMakeVersion.cmake)
 set(Version ${CURRENT_VERSION})
 
 if (BETA)
-    set (ProjectName "${ProjectName}-beta")
+    set (ProjectName "${ProjectName}")
     set (PluginName "${PluginName} [beta]")
     add_compile_definitions(BETA)
 endif()
