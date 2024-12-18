@@ -32,6 +32,7 @@ CPMAddPackage(
 set(SHARED_DEPENDENCIES
         juce::juce_audio_utils
         juce::juce_dsp
+        juce::juce_cryptography
         yaml-cpp
         imagiro_util
         imagiro_processor
