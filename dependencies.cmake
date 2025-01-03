@@ -34,7 +34,7 @@ set(SHARED_DEPENDENCIES
         juce::juce_dsp
         juce::juce_cryptography
         yaml-cpp
-        imagiro_util
-        imagiro_processor
+#        imagiro_util
+#        imagiro_processor
         "${ProjectName}Data"
 )
