@@ -7,6 +7,17 @@ if (WIN32)
 
     add_compile_options(/await)
     set(CMAKE_VS_WINDOWS_TARGET_PLATFORM_VERSION 10.0)
+
+    # Enable PDB generation for both Debug and Release builds
+    set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} /Zi")
+    set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} /Zi")
+
+    # Ensure the linker generates PDB files
+    set(CMAKE_SHARED_LINKER_FLAGS_RELEASE "${CMAKE_SHARED_LINKER_FLAGS_RELEASE} /DEBUG /OPT:REF /OPT:ICF")
+    set(CMAKE_SHARED_LINKER_FLAGS_DEBUG "${CMAKE_SHARED_LINKER_FLAGS_DEBUG} /DEBUG")
+
+    # Set PDB output directory
+    set(CMAKE_PDB_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/pdb")
 endif()
 
 # macOS and iOS configuration
