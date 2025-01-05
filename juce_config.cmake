@@ -4,7 +4,7 @@ juce_add_plugin("${ProjectName}"
         COMPANY_NAME "${CompanyName}"
         IS_SYNTH "${IsSynth}"
         NEEDS_MIDI_INPUT "${NeedsMidiInput}"
-        COPY_PLUGIN_AFTER_BUILD FALSE
+        COPY_PLUGIN_AFTER_BUILD TRUE
         PLUGIN_MANUFACTURER_CODE "${CompanyCode}"
         PLUGIN_CODE "${PluginCode}"
         FORMATS AU VST3 Standalone AAX AUv3
