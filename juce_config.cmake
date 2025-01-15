@@ -10,13 +10,13 @@ juce_add_plugin("${ProjectName}"
         FORMATS AU VST3 Standalone AAX AUv3
         PRODUCT_NAME "${PluginName}"
         LV2URI https://imagi.ro/piano
-#        NEEDS_WEBVIEW2 TRUE
+        NEEDS_WEBVIEW2 TRUE
         VST3_AUTO_MANIFEST TRUE)
 
 target_compile_definitions("${ProjectName}"
         PUBLIC
-#        JUCE_WEB_BROWSER=1
-#        JUCE_USE_WIN_WEBVIEW2_WITH_STATIC_LINKING=1
+        JUCE_WEB_BROWSER=1
+        JUCE_USE_WIN_WEBVIEW2_WITH_STATIC_LINKING=1
         JUCE_USE_CURL=0
         JUCE_VST3_CAN_REPLACE_VST2=0
         DONT_SET_USING_JUCE_NAMESPACE=1
