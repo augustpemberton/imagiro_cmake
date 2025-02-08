@@ -4,6 +4,11 @@ else()
     set(SHOULD_COPY_PLUGIN TRUE)
 endif()
 
+if (NOT DEFINED USE_VST3_MANIFEST)
+    set(USE_VST3_MANIFEST TRUE)
+endif()
+
+
 juce_add_plugin("${ProjectName}"
         ICON_BIG ${CMAKE_CURRENT_LIST_DIR}/../src/resources/icon-large.png
         ICON_SMALL ${CMAKE_CURRENT_LIST_DIR}/../src/resources/icon-small.png
@@ -17,7 +22,7 @@ juce_add_plugin("${ProjectName}"
         PRODUCT_NAME "${PluginName}"
         LV2URI https://imagi.ro/piano
         NEEDS_WEBVIEW2 TRUE
-        VST3_AUTO_MANIFEST TRUE)
+        VST3_AUTO_MANIFEST ${USE_VST3_MANIFEST})
 
 target_compile_definitions("${ProjectName}"
         PUBLIC

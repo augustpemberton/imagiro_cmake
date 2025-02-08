@@ -19,7 +19,7 @@ target_link_libraries("${ProjectName}" PRIVATE
         timestamp
         PUBLIC
         juce::juce_recommended_config_flags
-        juce::juce_recommended_lto_flags
+#        juce::juce_recommended_lto_flags
         juce::juce_recommended_warning_flags)
 
 # Setup unity build for everything except debug builds
