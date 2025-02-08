@@ -29,11 +29,14 @@ CPMAddPackage(
         "CATCH_INSTALL_HELPERS OFF" # Disable installation of helpers
 )
 
+find_package(Boost REQUIRED COMPONENTS system)  # system is required for Beast
+
 set(SHARED_DEPENDENCIES
         juce::juce_audio_utils
         juce::juce_dsp
         juce::juce_cryptography
         yaml-cpp
+        ${Boost_LIBRARIES}
 #        imagiro_util
 #        imagiro_processor
         "${ProjectName}Data"
