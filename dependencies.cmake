@@ -29,6 +29,17 @@ CPMAddPackage(
         "CATCH_INSTALL_HELPERS OFF" # Disable installation of helpers
 )
 
+set(CMAKE_POSITION_INDEPENDENT_CODE ON)
+set(BUILD_SHARED_LIBS OFF)
+set(CPR_BUILD_SHARED_LIBS OFF)
+set(CPR_USE_SYSTEM_CURL ON)
+
+CPMAddPackage(
+        NAME cpr
+        GITHUB_REPOSITORY libcpr/cpr
+        GIT_TAG 1.9.9
+)
+
 find_package(Boost REQUIRED COMPONENTS system)  # system is required for Beast
 
 set(SHARED_DEPENDENCIES
@@ -36,6 +47,7 @@ set(SHARED_DEPENDENCIES
         juce::juce_dsp
         juce::juce_cryptography
         yaml-cpp
+        cpr::cpr
         ${Boost_LIBRARIES}
 #        imagiro_util
 #        imagiro_processor
