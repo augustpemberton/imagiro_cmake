@@ -37,7 +37,7 @@ target_compile_definitions("${ProjectName}"
         PUBLIC
         JUCE_WEB_BROWSER=${USE_WEBVIEW_NUM}
         JUCE_USE_WIN_WEBVIEW2_WITH_STATIC_LINKING=0
-        JUCE_USE_CURL=0
+        JUCE_USE_CURL=1
         JUCE_VST3_CAN_REPLACE_VST2=0
         DONT_SET_USING_JUCE_NAMESPACE=1
 )

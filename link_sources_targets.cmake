@@ -1,3 +1,8 @@
+if (NOT DEFINED USE_LTO)
+    set(USE_LTO TRUE)
+endif()
+
+
 # Add .cpp source files
 target_sources("${ProjectName}" PRIVATE "${PROJECT_SOURCES}")
 
@@ -13,19 +18,24 @@ juce_add_binary_data("${ProjectName}Data" SOURCES ${binarydata_SRC} )
 target_include_directories("${ProjectName}" PUBLIC "${PROJECT_BINARY_DIR}")
 target_include_directories("${ProjectName}" PRIVATE ${Boost_INCLUDE_DIRS})
 
+if (${USE_LTO})
+    list(APPEND SHARED_DEPENDENCIES
+        juce::juce_recommended_lto_flags
+    )
+endif()
+
 # Link dependencies
 target_link_libraries("${ProjectName}" PRIVATE
         ${SHARED_DEPENDENCIES}
         timestamp
         PUBLIC
         juce::juce_recommended_config_flags
-#        juce::juce_recommended_lto_flags
         juce::juce_recommended_warning_flags)
 
 # Setup unity build for everything except debug builds
-set_target_properties("${ProjectName}" PROPERTIES
-        UNITY_BUILD $<NOT:$<CONFIG:Debug>>
-)
+#set_target_properties("${ProjectName}" PROPERTIES
+#        UNITY_BUILD $<NOT:$<CONFIG:Debug>>
+#)
 file(GLOB_RECURSE JUCE_SOURCES CONFIGURE_DEPENDS
         "${CMAKE_CURRENT_SOURCE_DIR}/cmake/cache/*.cpp"
         "${CMAKE_CURRENT_SOURCE_DIR}/cmake/cache/*.mm"
