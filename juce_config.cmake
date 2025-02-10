@@ -8,6 +8,10 @@ if (NOT DEFINED USE_VST3_MANIFEST)
     set(USE_VST3_MANIFEST TRUE)
 endif()
 
+if (NOT DEFINED USE_WEBVIEW)
+    set(USE_WEBVIEW TRUE)
+endif()
+
 
 juce_add_plugin("${ProjectName}"
         ICON_BIG ${CMAKE_CURRENT_LIST_DIR}/../src/resources/icon-large.png
@@ -21,13 +25,13 @@ juce_add_plugin("${ProjectName}"
         FORMATS AU VST3 Standalone AAX AUv3
         PRODUCT_NAME "${PluginName}"
         LV2URI https://imagi.ro/piano
-        NEEDS_WEBVIEW2 TRUE
+        NEEDS_WEBVIEW2 "${USE_WEBVIEW}"
         VST3_AUTO_MANIFEST ${USE_VST3_MANIFEST})
 
 target_compile_definitions("${ProjectName}"
         PUBLIC
-        JUCE_WEB_BROWSER=1
-        JUCE_USE_WIN_WEBVIEW2_WITH_STATIC_LINKING=1
+        JUCE_WEB_BROWSER="${USE_WEBVIEW}"
+        JUCE_USE_WIN_WEBVIEW2_WITH_STATIC_LINKING=0
         JUCE_USE_CURL=0
         JUCE_VST3_CAN_REPLACE_VST2=0
         DONT_SET_USING_JUCE_NAMESPACE=1
