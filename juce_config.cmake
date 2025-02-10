@@ -12,6 +12,11 @@ if (NOT DEFINED USE_WEBVIEW)
     set(USE_WEBVIEW TRUE)
 endif()
 
+if(${USE_WEBVIEW})
+    set(USE_WEBVIEW_NUM 1)
+else()
+    set(USE_WEBVIEW_NUM 0)
+endif()
 
 juce_add_plugin("${ProjectName}"
         ICON_BIG ${CMAKE_CURRENT_LIST_DIR}/../src/resources/icon-large.png
@@ -30,7 +35,7 @@ juce_add_plugin("${ProjectName}"
 
 target_compile_definitions("${ProjectName}"
         PUBLIC
-        JUCE_WEB_BROWSER="${USE_WEBVIEW}"
+        JUCE_WEB_BROWSER=${USE_WEBVIEW_NUM}
         JUCE_USE_WIN_WEBVIEW2_WITH_STATIC_LINKING=0
         JUCE_USE_CURL=0
         JUCE_VST3_CAN_REPLACE_VST2=0
