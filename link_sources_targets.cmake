@@ -33,9 +33,9 @@ target_link_libraries("${ProjectName}" PRIVATE
         juce::juce_recommended_warning_flags)
 
 # Setup unity build for everything except debug builds
-#set_target_properties("${ProjectName}" PROPERTIES
-#        UNITY_BUILD $<NOT:$<CONFIG:Debug>>
-#)
+set_target_properties("${ProjectName}" PROPERTIES
+        UNITY_BUILD $<NOT:$<CONFIG:Debug>>
+)
 file(GLOB_RECURSE JUCE_SOURCES CONFIGURE_DEPENDS
         "${CMAKE_CURRENT_SOURCE_DIR}/cmake/cache/*.cpp"
         "${CMAKE_CURRENT_SOURCE_DIR}/cmake/cache/*.mm"
