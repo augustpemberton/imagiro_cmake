@@ -5,7 +5,7 @@ set(CPM_SOURCE_CACHE "${CMAKE_CURRENT_LIST_DIR}/cache/")
 CPMAddPackage(
         NAME JUCE
         GITHUB_REPOSITORY juce-framework/JUCE
-        GIT_TAG 8.0.3
+        GIT_TAG 8.0.6
         OPTIONS
         "JUCE_BUILD_EXAMPLES OFF" # Disable building examples
         "JUCE_BUILD_EXTRAS OFF"   # Disable building extras
@@ -30,19 +30,19 @@ CPMAddPackage(
 )
 
 # Set Boost preferences before finding it
-set(Boost_USE_STATIC_LIBS ON)
-set(Boost_USE_MULTITHREADED ON)
-set(Boost_USE_STATIC_RUNTIME OFF)
+#set(Boost_USE_STATIC_LIBS ON)
+#set(Boost_USE_MULTITHREADED ON)
+#set(Boost_USE_STATIC_RUNTIME OFF)
 
 # Find Boost with all required components
-find_package(Boost REQUIRED COMPONENTS system )
+#find_package(Boost REQUIRED COMPONENTS system )
 
 set(SHARED_DEPENDENCIES
         juce::juce_audio_utils
         juce::juce_dsp
         juce::juce_cryptography
         yaml-cpp
-        ${Boost_LIBRARIES}
+ #       ${Boost_LIBRARIES}
 #        imagiro_util
 #        imagiro_processor
         "${ProjectName}Data"
