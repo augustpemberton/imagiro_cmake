@@ -29,14 +29,6 @@ CPMAddPackage(
         "CATCH_INSTALL_HELPERS OFF" # Disable installation of helpers
 )
 
-# Set Boost preferences before finding it
-set(Boost_USE_STATIC_LIBS ON)
-set(Boost_USE_MULTITHREADED ON)
-set(Boost_USE_STATIC_RUNTIME OFF)
-
-# Find Boost with all required components
-find_package(Boost REQUIRED COMPONENTS system )
-
 set(SHARED_DEPENDENCIES
         juce::juce_audio_utils
         juce::juce_dsp
