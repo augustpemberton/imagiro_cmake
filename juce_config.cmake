@@ -19,8 +19,8 @@ else()
 endif()
 
 juce_add_plugin("${ProjectName}"
-        ICON_BIG ${CMAKE_CURRENT_LIST_DIR}/../src/resources/icon-large.png
-        ICON_SMALL ${CMAKE_CURRENT_LIST_DIR}/../src/resources/icon-small.png
+        ICON_BIG ${CMAKE_CURRENT_LIST_DIR}/../resources/icon-large.png
+        ICON_SMALL ${CMAKE_CURRENT_LIST_DIR}/../resources/icon-small.png
         COMPANY_NAME "${CompanyName}"
         IS_SYNTH "${IsSynth}"
         NEEDS_MIDI_INPUT "${NeedsMidiInput}"
