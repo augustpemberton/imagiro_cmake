@@ -29,12 +29,28 @@ CPMAddPackage(
         "CATCH_INSTALL_HELPERS OFF" # Disable installation of helpers
 )
 
+
+CPMAddPackage(
+        NAME Benchmark
+        GITHUB_REPOSITORY google/benchmark
+        GIT_TAG v1.9.4
+        OPTIONS
+        "BENCHMARK_ENABLE_TESTING Off"
+)
+
+#if(benchmark_ADDED)
+#    # enable c++11 to avoid compilation errors
+#    set_target_properties(benchmark PROPERTIES CXX_STANDARD 11)
+#endif()
+
+set(SHARED_INCLUDE_DIRS)
+
 set(SHARED_DEPENDENCIES
         juce::juce_audio_utils
         juce::juce_dsp
         juce::juce_cryptography
         yaml-cpp
- #       ${Boost_LIBRARIES}
+        benchmark
 #        imagiro_util
 #        imagiro_processor
         "${ProjectName}Data"

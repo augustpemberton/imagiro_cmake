@@ -13,8 +13,10 @@ file(GLOB binarydata_SRC
 juce_add_binary_data("${ProjectName}Data" SOURCES ${binarydata_SRC} )
 target_include_directories("${ProjectName}" PUBLIC "${PROJECT_BINARY_DIR}")
 
-# Add include directories for Boost
-target_include_directories("${ProjectName}" PRIVATE ${Boost_INCLUDE_DIRS} )
+target_include_directories("${ProjectName}" SYSTEM PUBLIC
+        ${SHARED_INCLUDE_DIRS}
+)
+
 
 # Link dependencies
 target_link_libraries("${ProjectName}" PRIVATE
