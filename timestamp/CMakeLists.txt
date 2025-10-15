@@ -79,27 +79,18 @@ target_include_directories( timestamp
 		$<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>
 )
 
-## IMAGIRO - i've removed the cache-clearing on every build as it makes JUCE rebuild binary data for some reason
-# plus I don't really need it as i only distribute CI builds which start from a fresh cache
+set_target_properties(timestamp PROPERTIES
+		SKIP_PRECOMPILE_HEADERS TRUE
+)
 
-#Add a dummy target that removes the CMake variable BUILD_TIME from CMake's cache.
-#this forces CMake to be-rerun when we hit this target.
+# OPTIMIZATION: Only rebuild timestamp when git state actually changes
+# Track .git/HEAD and .git/index instead of forcing rebuild every time
+set_property(
+		SOURCE timestamp.c
+		APPEND
+		PROPERTY OBJECT_DEPENDS
+		"${CMAKE_SOURCE_DIR}/.git/HEAD"
+		"${CMAKE_SOURCE_DIR}/.git/index"
+)
 
-IF(WIN32)
-	add_custom_target(
-			clear_cache
-			COMMAND type nul > timestamp.h && type nul > timestamp.c
-	)
-ELSE()
-	add_custom_target(
-			clear_cache
-			COMMAND touch timestamp.h timestamp.c
-	)
-ENDIF()
-
-#Have the cache clearing be run before trying to build the timestamp library.
-#This (I think) is the same as a PRE_BUILD custom_command. But PRE_BUILD is
-#available for VS generators only, on others it is synonymous to PRE_LINK,
-#i.e. "post compile"
-add_dependencies(timestamp clear_cache)
 

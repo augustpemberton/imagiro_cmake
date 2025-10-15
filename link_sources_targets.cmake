@@ -28,9 +28,11 @@ target_link_libraries("${ProjectName}" PRIVATE
         juce::juce_recommended_lto_flags
 )
 
+
 # Setup unity build for everything except debug builds
 set_target_properties("${ProjectName}" PROPERTIES
         UNITY_BUILD $<NOT:$<CONFIG:Debug>>
+        UNITY_BUILD_BATCH_SIZE 16
 )
 
 file(GLOB_RECURSE JUCE_SOURCES CONFIGURE_DEPENDS
@@ -41,7 +43,11 @@ file(GLOB_RECURSE JUCE_SOURCES CONFIGURE_DEPENDS
         "${CMAKE_CURRENT_SOURCE_DIR}/modules/*.mm"
         "${CMAKE_CURRENT_SOURCE_DIR}/modules/*.r")
 
-set_source_files_properties(${JUCE_SOURCES} PROPERTIES SKIP_PRECOMPILE_HEADERS TRUE SKIP_UNITY_BUILD_INCLUSION TRUE)
+
+set_source_files_properties(${JUCE_SOURCES} PROPERTIES
+        SKIP_PRECOMPILE_HEADERS TRUE
+        SKIP_UNITY_BUILD_INCLUSION TRUE
+)
 
 # link against WinRT so we can manually check for windows text scaling
 if (WIN32)

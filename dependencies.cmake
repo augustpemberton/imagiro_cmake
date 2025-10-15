@@ -13,13 +13,6 @@ CPMAddPackage(
 )
 
 CPMAddPackage(
-        NAME yaml-cpp
-        GITHUB_REPOSITORY jbeder/yaml-cpp
-        GIT_TAG master
-        OPTIONS "YAML_CPP_BUILD_TESTS OFF"
-)
-
-CPMAddPackage(
         NAME Catch2
         GITHUB_REPOSITORY catchorg/Catch2
         GIT_TAG v3.4.0 # Use the desired version tag
@@ -28,7 +21,6 @@ CPMAddPackage(
         "CATCH_INSTALL_DOCS OFF"  # Disable installation of documentation
         "CATCH_INSTALL_HELPERS OFF" # Disable installation of helpers
 )
-
 
 CPMAddPackage(
         NAME Benchmark
@@ -49,7 +41,6 @@ set(SHARED_DEPENDENCIES
         juce::juce_audio_utils
         juce::juce_dsp
         juce::juce_cryptography
-        yaml-cpp
         benchmark
 #        imagiro_util
 #        imagiro_processor
