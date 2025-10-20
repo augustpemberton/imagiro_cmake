@@ -18,12 +18,19 @@ else()
     set(USE_WEBVIEW_NUM 0)
 endif()
 
+IF (${IS_SYNTH})
+    set (AAX_CATEGORY "AAX_ePlugInCategory_SWGenerators")
+else()
+    set (AAX_CATEGORY "AAX_ePlugInCategory_Effect")
+endif()
+
 juce_add_plugin("${ProjectName}"
         ICON_BIG ${CMAKE_CURRENT_LIST_DIR}/../resources/icon-large.png
         ICON_SMALL ${CMAKE_CURRENT_LIST_DIR}/../resources/icon-small.png
         COMPANY_NAME "${CompanyName}"
         IS_SYNTH "${IsSynth}"
         NEEDS_MIDI_INPUT "${NeedsMidiInput}"
+        AAX_CATEGORY "${AAX_CATEGORY}"
         COPY_PLUGIN_AFTER_BUILD ${SHOULD_COPY_PLUGIN}
         PLUGIN_MANUFACTURER_CODE "${CompanyCode}"
         PLUGIN_CODE "${PluginCode}"
