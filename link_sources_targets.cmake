@@ -35,13 +35,13 @@ set_target_properties("${ProjectName}" PROPERTIES
         UNITY_BUILD_BATCH_SIZE 16
 )
 
-file(GLOB_RECURSE JUCE_SOURCES CONFIGURE_DEPENDS
-        "${CMAKE_CURRENT_SOURCE_DIR}/cmake/cache/*.cpp"
-        "${CMAKE_CURRENT_SOURCE_DIR}/cmake/cache/*.mm"
-        "${CMAKE_CURRENT_SOURCE_DIR}/cmake/cache/*.r"
-        "${CMAKE_CURRENT_SOURCE_DIR}/modules/*.cpp"
-        "${CMAKE_CURRENT_SOURCE_DIR}/modules/*.mm"
-        "${CMAKE_CURRENT_SOURCE_DIR}/modules/*.r")
+#file(GLOB_RECURSE JUCE_SOURCES CONFIGURE_DEPENDS
+#        "${CMAKE_CURRENT_SOURCE_DIR}/cmake/cache/*.cpp"
+#        "${CMAKE_CURRENT_SOURCE_DIR}/cmake/cache/*.mm"
+#        "${CMAKE_CURRENT_SOURCE_DIR}/cmake/cache/*.r"
+#        "${CMAKE_CURRENT_SOURCE_DIR}/modules/*.cpp"
+#        "${CMAKE_CURRENT_SOURCE_DIR}/modules/*.mm"
+#        "${CMAKE_CURRENT_SOURCE_DIR}/modules/*.r")
 
 
 set_source_files_properties(${JUCE_SOURCES} PROPERTIES
