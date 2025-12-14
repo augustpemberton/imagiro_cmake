@@ -44,5 +44,8 @@ set(SHARED_DEPENDENCIES
         benchmark
 #        imagiro_util
 #        imagiro_processor
-        "${ProjectName}Data"
 )
+
+if (binarydata_SRC)
+    append(SHARED_DEPENDENCIES "${ProjectName}Data" )
+endif ()
