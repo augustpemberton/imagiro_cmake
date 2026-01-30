@@ -18,7 +18,6 @@ target_include_directories("${ProjectName}" SYSTEM PUBLIC
 # Link dependencies
 target_link_libraries("${ProjectName}" PRIVATE
         ${SHARED_DEPENDENCIES}
-        timestamp
         PUBLIC
         juce::juce_recommended_config_flags
         juce::juce_recommended_warning_flags

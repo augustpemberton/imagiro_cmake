@@ -44,6 +44,8 @@ set(SHARED_DEPENDENCIES
         benchmark
 #        imagiro_util
 #        imagiro_processor
+        timestamp
+        "${ProjectName}Data"
 )
 
 if (binarydata_SRC)
