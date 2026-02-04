@@ -45,9 +45,4 @@ set(SHARED_DEPENDENCIES
 #        imagiro_util
 #        imagiro_processor
         timestamp
-        "${ProjectName}Data"
 )
-
-if (binarydata_SRC)
-    append(SHARED_DEPENDENCIES "${ProjectName}Data" )
-endif ()

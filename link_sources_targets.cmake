@@ -3,9 +3,10 @@
 target_sources("${ProjectName}" PRIVATE "${PROJECT_SOURCES}")
 
 # Setup binary data
-file(GLOB binarydata_SRC "${BINARY_SOURCES}" )
+file(GLOB binarydata_SRC ${BINARY_SOURCES})
 if (binarydata_SRC)
-    juce_add_binary_data("${ProjectName}Data" SOURCES ${binarydata_SRC} )
+    juce_add_binary_data("${ProjectName}Data" SOURCES ${binarydata_SRC})
+    list(APPEND SHARED_DEPENDENCIES "${ProjectName}Data")
 endif ()
 
 target_include_directories("${ProjectName}" PUBLIC "${PROJECT_BINARY_DIR}")
