@@ -1,5 +1,4 @@
 include(${CMAKE_CURRENT_LIST_DIR}/CPM.cmake)
-set(CPM_SOURCE_CACHE "${CMAKE_CURRENT_LIST_DIR}/cache/")
 
 # JUCE, yaml-cpp, and Catch2
 CPMAddPackage(
