@@ -1,7 +1,8 @@
 include(${Catch2_SOURCE_DIR}/extras/Catch.cmake)
 
 add_executable(${ProjectName}_Tests
-        tests/main.cpp)
+        tests/main.cpp
+        ${PROJECT_SOURCES})
 
 target_link_libraries(${ProjectName}_Tests PRIVATE
         ${SHARED_DEPENDENCIES}
