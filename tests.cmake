@@ -2,10 +2,10 @@ include(${Catch2_SOURCE_DIR}/extras/Catch.cmake)
 
 add_executable(${ProjectName}_Tests
         tests/main.cpp
-        ${PROJECT_SOURCES})
+        ${TEST_SOURCES})
 
 target_link_libraries(${ProjectName}_Tests PRIVATE
-        ${SHARED_DEPENDENCIES}
+        ${TEST_DEPENDENCIES}
         Catch2::Catch2WithMain)
 
 target_include_directories(${ProjectName}_Tests SYSTEM PUBLIC
