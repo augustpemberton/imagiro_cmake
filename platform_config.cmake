@@ -7,6 +7,7 @@ if (WIN32)
 
     add_compile_options(/await)
     set(CMAKE_VS_WINDOWS_TARGET_PLATFORM_VERSION 10.0)
+    add_compile_options(/arch:AVX2)
 
     # Enable PDB generation for both Debug and Release builds
     set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} /Zi")
@@ -56,6 +57,9 @@ endif()
 
 if(CMAKE_CXX_COMPILER_ID MATCHES "GNU|Clang")
     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wno-dev")
+    if(CMAKE_SYSTEM_PROCESSOR MATCHES "x86_64|AMD64")
+        add_compile_options(-mf16c)
+    endif()
 endif()
 
 if (NOT DEFINED USE_FASTMATH)
