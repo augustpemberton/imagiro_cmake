@@ -4,7 +4,9 @@ add_executable(${ProjectName}_Benchmarks ${BenchmarkFiles})
 target_compile_features(${ProjectName}_Benchmarks PRIVATE cxx_std_20)
 
 target_link_libraries(${ProjectName}_Benchmarks PRIVATE
-        ${SHARED_DEPENDENCIES})
+        ${SHARED_DEPENDENCIES}
+        benchmark::benchmark
+        benchmark::benchmark_main)
 
 target_include_directories("${ProjectName}_Benchmarks" SYSTEM PUBLIC
         ${SHARED_INCLUDE_DIRS}
