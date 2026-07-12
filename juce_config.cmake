@@ -18,6 +18,14 @@ else()
     set(USE_WEBVIEW_NUM 0)
 endif()
 
+# Debug builds default to the two formats used for iteration; Release keeps
+# the full shipping set. Override with -DPLUGIN_FORMATS="..." either way.
+if(CMAKE_BUILD_TYPE STREQUAL "Debug")
+    set(PLUGIN_FORMATS "VST3;Standalone" CACHE STRING "Plugin formats to build")
+else()
+    set(PLUGIN_FORMATS "AU;VST3;Standalone;AAX;AUv3" CACHE STRING "Plugin formats to build")
+endif()
+
 IF (${IsSynth})
     set (AAX_CATEGORY "AAX_ePlugInCategory_SWGenerators")
     set(NeedsMidiInput TRUE)
@@ -35,7 +43,7 @@ juce_add_plugin("${ProjectName}"
         COPY_PLUGIN_AFTER_BUILD ${SHOULD_COPY_PLUGIN}
         PLUGIN_MANUFACTURER_CODE "${CompanyCode}"
         PLUGIN_CODE "${PluginCode}"
-        FORMATS AU VST3 Standalone AAX AUv3
+        FORMATS ${PLUGIN_FORMATS}
         PRODUCT_NAME "${PluginName}"
         LV2URI https://imagi.ro/piano
         NEEDS_WEBVIEW2 "${USE_WEBVIEW}"

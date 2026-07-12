@@ -90,7 +90,6 @@ set_property(
 		APPEND
 		PROPERTY OBJECT_DEPENDS
 		"${CMAKE_SOURCE_DIR}/.git/HEAD"
-		"${CMAKE_SOURCE_DIR}/.git/index"
 )
 
 
