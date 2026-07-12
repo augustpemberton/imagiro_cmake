@@ -19,7 +19,9 @@ foreach(_test_target IN LISTS _test_targets)
             ${SHARED_INCLUDE_DIRS}
     )
 
-    target_compile_definitions(${_test_target} PRIVATE $<TARGET_PROPERTY:${PROJECT_NAME},COMPILE_DEFINITIONS>)
+    if(TARGET ${PROJECT_NAME})
+        target_compile_definitions(${_test_target} PRIVATE $<TARGET_PROPERTY:${PROJECT_NAME},COMPILE_DEFINITIONS>)
+    endif()
 
     if(EXISTS "${CMAKE_SOURCE_DIR}/tests/tests_pch.hpp")
         target_precompile_headers(${_test_target} PRIVATE

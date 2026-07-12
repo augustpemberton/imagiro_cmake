@@ -69,7 +69,7 @@ elseif(MSVC)
 endif()
 
 # Fast linker for iteration builds when available
-if(NOT APPLE AND NOT WIN32)
+if(NOT APPLE AND NOT WIN32 AND NOT EMSCRIPTEN)
     find_program(MOLD_EXECUTABLE mold)
     if(MOLD_EXECUTABLE)
         add_link_options(-fuse-ld=mold)

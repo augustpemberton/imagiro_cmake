@@ -1,15 +1,17 @@
 include(${CMAKE_CURRENT_LIST_DIR}/CPM.cmake)
 
 # JUCE, yaml-cpp, and Catch2
-CPMAddPackage(
-        NAME JUCE
-        GITHUB_REPOSITORY juce-framework/JUCE
-        GIT_TAG 8.0.10
-        OPTIONS
-        "JUCE_BUILD_EXAMPLES OFF" # Disable building examples
-        "JUCE_BUILD_EXTRAS OFF"   # Disable building extras
-        "JUCE_ENABLE_MODULE_SOURCE_GROUPS OFF" # Improve generation speed
-)
+if(NOT DEFINED NOVO_NATIVE_SHELL OR NOVO_NATIVE_SHELL)
+    CPMAddPackage(
+            NAME JUCE
+            GITHUB_REPOSITORY juce-framework/JUCE
+            GIT_TAG 8.0.10
+            OPTIONS
+            "JUCE_BUILD_EXAMPLES OFF" # Disable building examples
+            "JUCE_BUILD_EXTRAS OFF"   # Disable building extras
+            "JUCE_ENABLE_MODULE_SOURCE_GROUPS OFF" # Improve generation speed
+    )
+endif()
 
 CPMAddPackage(
         NAME Catch2
