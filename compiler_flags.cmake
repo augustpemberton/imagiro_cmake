@@ -21,13 +21,22 @@ if(CMAKE_CXX_COMPILER_ID MATCHES "GNU|Clang")
     endif()
 endif()
 
+# -O3/-O2 is fine everywhere (incl. third-party deps).
 if(CMAKE_CXX_COMPILER_ID MATCHES "GNU|Clang")
-    # -fno-finite-math-only keeps fast-math's speed but lets inf/NaN exist:
-    # required by third-party deps (fmt's infinity constant) and safer for our
-    # own DSP, which the compiler must not assume is NaN/inf-free.
-    add_compile_options("$<$<NOT:$<CONFIG:Debug>>:-O3;-ffast-math;-fno-finite-math-only;-ffp-contract=fast>")
+    add_compile_options("$<$<NOT:$<CONFIG:Debug>>:-O3>")
 elseif(MSVC)
-    add_compile_options("$<$<NOT:$<CONFIG:Debug>>:/O2;/fp:fast>")
+    add_compile_options("$<$<NOT:$<CONFIG:Debug>>:/O2>")
+endif()
+
+# Fast-math belongs ONLY on our DSP, not on dependencies (fmt/visage/clap-
+# wrapper have no reason to want it, and it breaks fmt's inf constant). Our
+# DSP targets link this INTERFACE target to opt in. -fno-finite-math-only
+# keeps the speed but lets inf/NaN exist (our DSP can produce them).
+if(NOT TARGET imagiro_fastmath)
+    add_library(imagiro_fastmath INTERFACE)
+    target_compile_options(imagiro_fastmath INTERFACE
+            "$<$<AND:$<NOT:$<CONFIG:Debug>>,$<OR:$<CXX_COMPILER_ID:GNU>,$<CXX_COMPILER_ID:Clang>>>:-ffast-math;-fno-finite-math-only;-ffp-contract=fast>"
+            "$<$<AND:$<NOT:$<CONFIG:Debug>>,$<CXX_COMPILER_ID:MSVC>>:/fp:fast>")
 endif()
 
 # Fast linker for iteration builds when available
