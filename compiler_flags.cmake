@@ -22,7 +22,10 @@ if(CMAKE_CXX_COMPILER_ID MATCHES "GNU|Clang")
 endif()
 
 if(CMAKE_CXX_COMPILER_ID MATCHES "GNU|Clang")
-    add_compile_options("$<$<NOT:$<CONFIG:Debug>>:-O3;-ffast-math;-ffp-contract=fast>")
+    # -fno-finite-math-only keeps fast-math's speed but lets inf/NaN exist:
+    # required by third-party deps (fmt's infinity constant) and safer for our
+    # own DSP, which the compiler must not assume is NaN/inf-free.
+    add_compile_options("$<$<NOT:$<CONFIG:Debug>>:-O3;-ffast-math;-fno-finite-math-only;-ffp-contract=fast>")
 elseif(MSVC)
     add_compile_options("$<$<NOT:$<CONFIG:Debug>>:/O2;/fp:fast>")
 endif()
