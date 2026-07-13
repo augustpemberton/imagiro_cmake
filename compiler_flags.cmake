@@ -3,6 +3,18 @@
 # silently no-ops (this bit us: -mf16c and the Release -O3/-ffast-math
 # block never applied on Linux).
 
+# Cache compiles when ccache is present (opt-out with -DUSE_CCACHE=OFF).
+if(NOT DEFINED USE_CCACHE)
+    set(USE_CCACHE ON)
+endif()
+if(USE_CCACHE AND NOT CMAKE_CXX_COMPILER_LAUNCHER)
+    find_program(CCACHE_EXECUTABLE ccache)
+    if(CCACHE_EXECUTABLE)
+        set(CMAKE_C_COMPILER_LAUNCHER "${CCACHE_EXECUTABLE}" CACHE STRING "" FORCE)
+        set(CMAKE_CXX_COMPILER_LAUNCHER "${CCACHE_EXECUTABLE}" CACHE STRING "" FORCE)
+    endif()
+endif()
+
 if(CMAKE_CXX_COMPILER_ID MATCHES "GNU|Clang")
     if(CMAKE_SYSTEM_PROCESSOR MATCHES "x86_64|AMD64")
         add_compile_options(-mf16c)
