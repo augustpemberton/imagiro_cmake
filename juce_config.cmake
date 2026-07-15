@@ -1,3 +1,9 @@
+# JUCE-only: builds the juce_add_plugin shell. A no-op unless the project opted
+# into JUCE, so a CLAP-first plugin that includes it by habit stays JUCE-free.
+if(NOT IMAGIRO_ENABLE_JUCE)
+    return()
+endif()
+
 if(DEFINED ENV{COPY_PLUGIN_AFTER_BUILD})
     set(SHOULD_COPY_PLUGIN $ENV{COPY_PLUGIN_AFTER_BUILD})
 else()

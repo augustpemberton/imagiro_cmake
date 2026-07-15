@@ -1,7 +1,11 @@
 include(${CMAKE_CURRENT_LIST_DIR}/CPM.cmake)
 
-# JUCE, yaml-cpp, and Catch2
-if(NOT DEFINED NOVO_NATIVE_SHELL OR NOVO_NATIVE_SHELL)
+# JUCE is strictly opt-in. Plugins that ship a JUCE-hosted shell set
+# IMAGIRO_ENABLE_JUCE before including this; CLAP-first plugins leave it off and
+# nothing here references a juce:: target or pulls a JUCE-specific config file.
+option(IMAGIRO_ENABLE_JUCE "Fetch JUCE and build the JUCE plugin shell" OFF)
+
+if(IMAGIRO_ENABLE_JUCE)
     CPMAddPackage(
             NAME JUCE
             GITHUB_REPOSITORY juce-framework/JUCE
@@ -26,10 +30,13 @@ CPMAddPackage(
 set(SHARED_INCLUDE_DIRS)
 
 set(SHARED_DEPENDENCIES
-        juce::juce_audio_utils
-        juce::juce_dsp
-        juce::juce_cryptography
-#        imagiro_util
-#        imagiro_processor
         timestamp
 )
+
+if(IMAGIRO_ENABLE_JUCE)
+    list(APPEND SHARED_DEPENDENCIES
+            juce::juce_audio_utils
+            juce::juce_dsp
+            juce::juce_cryptography
+    )
+endif()

@@ -1,3 +1,9 @@
+# JUCE-only: wires sources/deps onto the juce_add_plugin target. A no-op unless
+# the project opted into JUCE (the ${ProjectName} target and juce:: deps only
+# exist then).
+if(NOT IMAGIRO_ENABLE_JUCE)
+    return()
+endif()
 
 # Add .cpp source files
 target_sources("${ProjectName}" PRIVATE "${PROJECT_SOURCES}")
